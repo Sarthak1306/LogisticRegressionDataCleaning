@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
 
 
 def create_model(data):
@@ -21,6 +22,17 @@ def create_model(data):
     )
 
     # Train the model
+
+    model = LogisticRegression()
+    model.fit(X_train, y_train)
+
+    # Test the model
+
+    y_pred = model.predict(X_test)
+    print("Accuracy of the model : ", accuracy_score(y_test, y_pred))
+    print("Classification Report : ", classification_report(y_test, y_pred))
+
+    return model, scaler
 
 
 def get_clean_data():
