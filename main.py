@@ -11,4 +11,9 @@ data = pd.read_csv("data.csv")
 # plt.show()
 
 data.drop(["Unnamed: 32", "id"], axis=1, inplace=True)
+
+
+data["diagnosis"] = data["diagnosis"].map({"M": 1, "B": 0})
+
+
 print(data.head())
